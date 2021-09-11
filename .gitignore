@@ -1,0 +1,7 @@
+controllers/
+images/
+models/
+node_modules/
+routes/
+app.js
+server.js
