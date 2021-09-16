@@ -15,19 +15,32 @@
 function showAllItems(data) {
     let listItem = document.getElementById("catalogue"); // target where in HTML page we want to insert items
     for (let i = 0; i < data.length; i++) { // get every object in our list of JSON object
-        let a = document.createElement("a"); //create a new link element
+        
+        let linkToTeddy = document.createElement("a"); //create a new link element 
         let figure = document.createElement("figure"); // create a new figure element
-        let img = document.createElement("img"); // create a new image element
-        let figcaption = document.createElement("figcaption"); // create a new p element
-        figcaption.innerHTML = data[i].name + " " +data[i].price / 100 +" euros"; // fill the p element with name and price
-        img.src = data[i].imageUrl; // fill img element with imageUrl
-        a.href = "../pages/produit.html">+data[i]._id; // on hover, show produits's page and id. if true, show product details, if false, create page doesn't exist
-        listItem.appendChild(a); // add clickable link a to catalogue ID
-        a.appendChild(figure); // add figure in it
-        figure.appendChild(img); // add img to clickable link a and figure 
-        figure.appendChild(figcaption); // add figcaption to figure
+        let teddyCaption = document.createElement("img"); // create a new image element
+        let teddyName = document.createElement("figcaption"); // create a new figcaption element
+        let teddyPrice = document.createElement("b"); // create a new b element 
+
+        linkToTeddy.href = "../../public/pages/produit.html"+"?id="+data[i]._id ;  // on hover, show produits's page and id. Added ?id= for query parameter  
+        teddyCaption.src = data[i].imageUrl; // fill img created element with imageUrl
+        teddyName.innerHTML = data[i].name; // fill the figcaption created element with name 
+        teddyPrice.innerHTML = data[i].price / 100 +" euros"; // fill the b created element with price
+
+        listItem.appendChild(linkToTeddy); // add clickable link a to catalogue ID
+        linkToTeddy.appendChild(figure); // add figure in a 
+        figure.appendChild(teddyCaption); // add img to clickable link a and figure 
+        figure.appendChild(teddyName); // add figcaption to figure
+        figure.appendChild(teddyPrice); // add price to figure
+
     }
   }
+
+
+
+
+
+
 
 
 
