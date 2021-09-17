@@ -15,18 +15,39 @@
 </head>
 <body>
     <nav>
-        <img src="logo.PNG" alt="logo">
+        <img src="../logo.PNG" alt="logo">
         <ul>
-            <li><a href="index.html" >Accueil</a></li>
-            <li><a href="./pages/panier.html"><i class="fas fa-shopping-cart"></i></a></li>
+            <li><a href="../index.html" >Accueil</a></li>
+            <li><a href="./panier.html"><i class="fas fa-shopping-cart"></i><span id="card-count">0</span></a></li>
         </ul>
     </nav>
     <header>
-        <h1>Les meilleurs ours en peluche chez Orinoco</h1>
+        <h1>Finalisez votre commande</h1>
     </header>
-    <article id="catalogue">
-        <h2>Nos ours en peluche disponibles à la vente</h2>
+    <article id="order">
+        <h2>Mon Panier</h2>
+        <section id="basket">
+        </section>
+        <section id="overview">
+            <h3>Synthèse de la commande</h3>
+            <p id="numberOfItems">Nombre d'article: </p>
+            <b id="totalPrice">Total</b>
+        </section>
     </article>
+    <form>
+        <h2>Informations de livraion</h2>
+        <label for="firstName"></label>
+        <input type="text" id="firstName" name="firstName" placeholder="Nom">
+        <label for="lastName"></label>
+        <input type="text" id="lastName" name="lastName" placeholder="Prénom"><br>
+        <label for="address"></label>
+        <input type="text" id="address" name="address" placeholder="Adresse">
+        <label for="city"></label>
+        <input type="text" id="city" name="city" placeholder="Ville"><br>
+        <label for="email"></label>
+        <input type="email" id="email" name="email" placeholder="Email"><br>
+        <button id="order_btn">Commander</button>
+    </form>
     <footer>
         <h3>Orinoco</h3>
             <ul>
@@ -35,6 +56,5 @@
                 <li><a href="#">Contact</a></li>
             </ul>
     </footer>
-<script src="./js/ajax.js"></script>
 </body>
 </html>
