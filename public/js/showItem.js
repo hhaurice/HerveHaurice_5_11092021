@@ -1,4 +1,3 @@
-
 //Get ID from url
 function getId() {
     let queryString = window.location.search; // get url after ?: exemple pour Norbert: ?id=5beaa8bf1c9d440000a57d94
@@ -7,6 +6,7 @@ function getId() {
 }
 
 let id = getId(); // put function id in a variable so that we can use it later in the code
+
 // Get Data API
 
 fetch("http://localhost:3000/api/teddies/"+id) // fetch API with id to return teddy given id. Ex: in the API, Norbert is http://localhost:3000/api/teddies/5be9c8541c9d440000665243
@@ -39,6 +39,7 @@ function showItem(data) {
 
     productCaption.src = data.imageUrl; 
     productName.innerHTML = data.name;
+    selectColor.id = "colors";
     colorOption.text = "--Choisissez une couleur--";
     productPrice.innerHTML = data.price / 100 +" euros";
     productDescription.innerHTML = data.description;
@@ -49,6 +50,7 @@ function showItem(data) {
     productSection.appendChild(productName);
     selectColor.appendChild(colorOption);
     productSection.appendChild(selectColor);
+
     //add a drop down list that creates value option in select element according to the array values in data.colors
     for(let i = 0; i < data.colors.length; i++) {
         let option = document.createElement("option");
@@ -58,8 +60,49 @@ function showItem(data) {
     }
     productSection.appendChild(productPrice).style.fontWeight="900";
     productSection.appendChild(productDescription);
-    productSection.appendChild(addtoBasketBtn)
-    }
+    productSection.appendChild(addtoBasketBtn);
+
+
+    // Test localstorage
+
+    let teddyName = document.getElementsByTagName("h2")[0];
+    let teddyPrice = document.getElementsByTagName("p")[0];
+    let teddyColor = document.getElementById("colors"); // Sélectionnne ID select
+
+   
+
+    if(!localStorage.getItem('h2')) {
+        console.log("1"+ populateStorage())
+
+        populateStorage();
+      } else {
+          console.log("2"+ setColor())
+        setColor();
+        
+      }
+
+   function populateStorage(){
+        localStorage.setItem("h2", teddyName.textContent);
+        localStorage.setItem("p", teddyPrice.textContent);
+        localStorage.setItem("colors", teddyColor.value);
+
+        setColor();
+        
+   } 
+  
+   function setColor(){
+       let currentColor = localStorage.getItem("colors");
+       console.log(currentColor)
+       document.getElementById("colors").value = currentColor;
+   }
+   
+   teddyColor.onchange = populateStorage;
+
+    // Fin test localStorage
+
+};
+
+
 
 
 
