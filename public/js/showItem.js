@@ -94,7 +94,10 @@ function showItem(data) {
         }
         cart.push(teddy)
         localStorage.setItem("cart", JSON.stringify(cart))
-      })      
+         alert("Article enregistré dans le panier")
+       
+        
+    })      
     }
     
     
