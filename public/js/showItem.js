@@ -1,3 +1,4 @@
+
 //Get ID from url
 function getId() {
     let queryString = window.location.search; // get url after ?: exemple pour Norbert: ?id=5beaa8bf1c9d440000a57d94
@@ -31,16 +32,18 @@ function showItem(data) {
     let productCaption = document.createElement("img");
     let productSection = document.createElement("section");
     let productName = document.createElement("h2");
+    let selectTitle = document.createElement("label");
     let selectColor = document.createElement("select"); 
-    let colorOption = document.createElement("option"); 
     let productPrice = document.createElement("p");
     let productDescription = document.createElement("p");
     let addtoBasketBtn = document.createElement("button");
 
+
+
     productCaption.src = data.imageUrl; 
     productName.innerHTML = data.name;
     selectColor.id = "colors";
-    colorOption.text = "--Choisissez une couleur--";
+    selectTitle.innerHTML = "Choisissez une couleur: ";
     productPrice.innerHTML = data.price / 100 +" euros";
     productDescription.innerHTML = data.description;
     addtoBasketBtn.innerHTML = "Ajoutez au panier";
@@ -48,7 +51,7 @@ function showItem(data) {
     product.appendChild(productCaption);
     product.appendChild(productSection);
     productSection.appendChild(productName);
-    selectColor.appendChild(colorOption);
+    productSection.appendChild(selectTitle);
     productSection.appendChild(selectColor);
 
     //add a drop down list that creates value option in select element according to the array values in data.colors
@@ -56,6 +59,7 @@ function showItem(data) {
         let option = document.createElement("option");
         option.value = data.colors[i];
         option.text = data.colors[i];
+        option.selected = data.colors[0];
         selectColor.appendChild(option);
     }
     productSection.appendChild(productPrice).style.fontWeight="900";
@@ -63,20 +67,58 @@ function showItem(data) {
     productSection.appendChild(addtoBasketBtn);
 
 
-    // Test localstorage
+    // Test addToBasket
+   
+    /* let teddy = {
+        name: data.name,
+        price: data.price,
+        colors: data.colors
+    }
 
+    let teddyJSON = JSON.stringify(teddy);
+    localStorage.setItem("product", teddyJSON);
+    teddyJSON = localStorage.getItem("product");
+    teddy = JSON.parse(teddyJSON);
+    */
+
+    let addToCart = document.getElementsByTagName("button");
+    console.log("1 "+ addToCart)  
+    for (let i = 0; i < addToCart.length; i++) {
+      addToCart[i].addEventListener("click", function(event){
+        let cart = JSON.parse(localStorage.getItem("cart")) || []
+
+        let teddy = {
+            name: data.name,
+            price: data.price,
+            caption: data.imageUrl
+        }
+        cart.push(teddy)
+        localStorage.setItem("cart", JSON.stringify(cart))
+      })      
+    }
+    
+    
+
+
+
+ 
+
+
+
+
+    // Fin test addtoBasket
+
+    // Test localstorage
+    /*
     let teddyName = document.getElementsByTagName("h2")[0];
     let teddyPrice = document.getElementsByTagName("p")[0];
-    let teddyColor = document.getElementById("colors"); // Sélectionnne ID select
+    let teddyColor = document.getElementById("colors"); 
 
    
 
     if(!localStorage.getItem('h2')) {
-        console.log("1"+ populateStorage())
-
         populateStorage();
       } else {
-          console.log("2"+ setColor())
         setColor();
         
       }
@@ -92,13 +134,14 @@ function showItem(data) {
   
    function setColor(){
        let currentColor = localStorage.getItem("colors");
-       console.log(currentColor)
        document.getElementById("colors").value = currentColor;
    }
    
    teddyColor.onchange = populateStorage;
-
+   */
     // Fin test localStorage
+
+    
 
 };
 
