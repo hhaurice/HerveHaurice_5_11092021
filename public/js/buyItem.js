@@ -70,27 +70,34 @@ function buyItem(data) {
     productSection.appendChild(addtoBasketBtn);
 
 
-    // AddtoCart
-   
-    let addToCart = document.getElementsByTagName("button");
-    for (let i = 0; i < addToCart.length; i++) { // Loop enables to get value of HTML created DOM element since it is an array
-      addToCart[i].addEventListener("click", function(event){ // click event
-        let cart = JSON.parse(localStorage.getItem("cart")) || [] 
-
-        let teddy = {
-            name: data.name,
-            price: data.price,
-            caption: data.imageUrl
-        }
-        cart.push(teddy) // push data in array
-        localStorage.setItem("cart", JSON.stringify(cart)) 
-         alert("Article enregistré dans le panier")
-
-    })      
-}   
-       
+addToCart(data);
 
 };
+
+
+    // Add to cart
+
+        function addToCart(data) {
+        let addToCart = document.getElementsByTagName("button");
+
+        for (let i = 0; i < addToCart.length; i++) { // Loop enables to get value of HTML created DOM element since it is an array
+            addToCart[i].addEventListener("click", function(event){ // click event
+        
+        let cart = JSON.parse(localStorage.getItem("cart")) || [] 
+        
+            let teddy = {
+                name: data.name,
+                price: data.price,
+                caption: data.imageUrl
+            }
+            cart.push(teddy) // push data in array
+            localStorage.setItem("cart", JSON.stringify(cart)) 
+            alert("Article enregistré dans le panier")
+        
+            })      
+        }  
+    }
+
 
 
 
