@@ -14,6 +14,8 @@
 
 function showAllItems(data) {
     let listItem = document.getElementById("catalogue"); // target where in HTML page we want to insert items
+    let teddySection = document.createElement("section"); // create a new section element
+
     for (let i = 0; i < data.length; i++) { // get every object in our list of JSON object
         
         let linkToTeddy = document.createElement("a"); //create a new link element 
@@ -27,7 +29,8 @@ function showAllItems(data) {
         teddyName.innerHTML = data[i].name; // fill the figcaption created element with name 
         teddyPrice.innerHTML = data[i].price / 100 +" euros"; // fill the b created element with price
 
-        listItem.appendChild(linkToTeddy); // add clickable link a to catalogue ID
+        listItem.appendChild(teddySection) // add section to catalogue
+        teddySection.appendChild(linkToTeddy); // add clickable link a section
         linkToTeddy.appendChild(figure); // add figure in a 
         figure.appendChild(teddyCaption); // add img to clickable link a and figure 
         figure.appendChild(teddyName); // add figcaption to figure
