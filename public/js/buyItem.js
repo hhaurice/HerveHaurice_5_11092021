@@ -20,12 +20,14 @@ fetch("http://localhost:3000/api/teddies/"+id) // fetch API with id to return te
     }
 })    
 .then((data) => {
-    showItem(data);  // invoke function 
+    buyItem(data);  // invoke function 
 })
 
 // Show product info
 
-function showItem(data) {
+function buyItem(data) {
+
+    // Show product info by creating dynamically DOM elements
 
     let product = document.getElementById('produit');
 
@@ -38,7 +40,7 @@ function showItem(data) {
     let productDescription = document.createElement("p");
     let addtoBasketBtn = document.createElement("button");
 
-
+    // Fill DOM created elements with data
 
     productCaption.src = data.imageUrl; 
     productName.innerHTML = data.name;
@@ -47,6 +49,7 @@ function showItem(data) {
     productPrice.innerHTML = data.price / 100 +" euros";
     productDescription.innerHTML = data.description;
     addtoBasketBtn.innerHTML = "Ajoutez au panier";
+
 
     product.appendChild(productCaption);
     product.appendChild(productSection);
@@ -67,84 +70,25 @@ function showItem(data) {
     productSection.appendChild(addtoBasketBtn);
 
 
-    // Test addToBasket
+    // AddtoCart
    
-    /* let teddy = {
-        name: data.name,
-        price: data.price,
-        colors: data.colors
-    }
-
-    let teddyJSON = JSON.stringify(teddy);
-    localStorage.setItem("product", teddyJSON);
-    teddyJSON = localStorage.getItem("product");
-    teddy = JSON.parse(teddyJSON);
-    */
-
     let addToCart = document.getElementsByTagName("button");
-    console.log("1 "+ addToCart)  
-    for (let i = 0; i < addToCart.length; i++) {
-      addToCart[i].addEventListener("click", function(event){
-        let cart = JSON.parse(localStorage.getItem("cart")) || []
+    for (let i = 0; i < addToCart.length; i++) { // Loop enables to get value of HTML created DOM element since it is an array
+      addToCart[i].addEventListener("click", function(event){ // click event
+        let cart = JSON.parse(localStorage.getItem("cart")) || [] 
 
         let teddy = {
             name: data.name,
             price: data.price,
             caption: data.imageUrl
         }
-        cart.push(teddy)
-        localStorage.setItem("cart", JSON.stringify(cart))
+        cart.push(teddy) // push data in array
+        localStorage.setItem("cart", JSON.stringify(cart)) 
          alert("Article enregistré dans le panier")
-       
-        
+
     })      
-    }
-    
-    
-
-
-
- 
-
-
-
-
-    // Fin test addtoBasket
-
-    // Test localstorage
-    /*
-    let teddyName = document.getElementsByTagName("h2")[0];
-    let teddyPrice = document.getElementsByTagName("p")[0];
-    let teddyColor = document.getElementById("colors"); 
-
-   
-
-    if(!localStorage.getItem('h2')) {
-        populateStorage();
-      } else {
-        setColor();
-        
-      }
-
-   function populateStorage(){
-        localStorage.setItem("h2", teddyName.textContent);
-        localStorage.setItem("p", teddyPrice.textContent);
-        localStorage.setItem("colors", teddyColor.value);
-
-        setColor();
-        
-   } 
-  
-   function setColor(){
-       let currentColor = localStorage.getItem("colors");
-       document.getElementById("colors").value = currentColor;
-   }
-   
-   teddyColor.onchange = populateStorage;
-   */
-    // Fin test localStorage
-
-    
+}   
+       
 
 };
 
