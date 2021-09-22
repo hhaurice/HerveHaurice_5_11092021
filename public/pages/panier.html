@@ -8,6 +8,11 @@
 
     <link rel="icon" href="logo.PNG" type="image/x-icon">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Knewave&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Knewave&family=Yanone+Kaffeesatz:wght@200&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="../css/order.css">
 
     <meta name="description" content="Orinoco, entreprise de vente en ligne de produits thématiques.">
     <meta name="author" content="Hervé Haurice">
@@ -24,30 +29,35 @@
     <header>
         <h1>Finalisez votre commande</h1>
     </header>
-    <article id="order">
-        <h2>Mon Panier</h2>
-        <section id="cart">
-        </section>
-        <section id="overview">
-            <h3>Synthèse de la commande</h3>
-            <p id="numberOfItems">Nombre d'article: </p>
-            <b id="totalPrice">Total</b>
-        </section>
-    </article>
-    <form>
-        <h2>Informations de livraion</h2>
-        <label for="firstName"></label>
-        <input type="text" id="firstName" name="firstName" placeholder="Nom">
-        <label for="lastName"></label>
-        <input type="text" id="lastName" name="lastName" placeholder="Prénom"><br>
-        <label for="address"></label>
-        <input type="text" id="address" name="address" placeholder="Adresse">
-        <label for="city"></label>
-        <input type="text" id="city" name="city" placeholder="Ville"><br>
-        <label for="email"></label>
-        <input type="email" id="email" name="email" placeholder="Email"><br>
-        <button id="order_btn">Commander</button>
-    </form>
+    <main>
+        <article id="order">
+            <h2>Mon Panier</h2>
+            <section id="cart">
+            </section>
+        </article>
+        <div>
+            <section id="overview">
+                <h3>Synthèse de la commande</h3>
+                <p id="numberOfItems">Nombre d'article: </p>
+                <b id="totalPrice">Total</b>
+            </section>
+            <form>
+                <h2>Informations de livraion</h2>
+                <label for="firstName"></label>
+                <input type="text" id="firstName" name="firstName" placeholder="Nom">
+                <label for="lastName"></label>
+                <input type="text" id="lastName" name="lastName" placeholder="Prénom"><br>
+                <label for="address"></label>
+                <input type="text" id="address" name="address" placeholder="Adresse">
+                <label for="city"></label>
+                <input type="text" id="city" name="city" placeholder="Ville"><br>
+                <label for="email"></label>
+                <input type="email" id="email" name="email" placeholder="Email"><br>
+                <button id="order_btn">Commander</button>
+            </form>
+        </div>
+    </main>    
+
     <footer>
         <h3>Orinoco</h3>
             <ul>
