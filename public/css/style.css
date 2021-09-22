@@ -52,6 +52,16 @@ li {
     padding: 50px;
 }
 
+nav a {
+    display: flex;
+    align-self: center;
+}
+
+nav  a:hover {
+    color: #9C5BEC;
+   }
+   
+
 #catalogue {
     display: flex;
     flex-direction: column;
@@ -115,6 +125,12 @@ footer ul {
 }
 
 
+footer a:hover {
+    color: #9C5BEC;
+   }
+
+/* Media queries */ 
+
 @media screen and (max-width: 1024px) {
     
     h2 {
@@ -129,6 +145,10 @@ footer ul {
 
     nav {
         flex-direction: column;
+    }
+
+    nav a {
+        width: auto;
     }
 
     nav img {
