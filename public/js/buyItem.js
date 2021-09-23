@@ -79,17 +79,22 @@ addToCart(data);
 
         function addToCart(data) {
         let addToCart = document.getElementsByTagName("button");
-
+        var selectElem = document.getElementById('colors');
+                
         for (let i = 0; i < addToCart.length; i++) { // Loop enables to get value of HTML created DOM element since it is an array
             addToCart[i].addEventListener("click", function(event){ // click event
         
         let cart = JSON.parse(localStorage.getItem("cart")) || [] 
-        
+
             let teddy = {
                 name: data.name,
                 price: data.price,
-                caption: data.imageUrl
+                color: data.colors,
+                caption: data.imageUrl            
             }
+
+            teddy.color = selectElem.value; // Get value from <select id= "colors">
+
             cart.push(teddy) // push data in array
             localStorage.setItem("cart", JSON.stringify(cart)) 
             alert("Article enregistré dans le panier")
