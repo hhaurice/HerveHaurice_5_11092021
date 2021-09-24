@@ -21,6 +21,8 @@ fetch("http://localhost:3000/api/teddies/"+id) // fetch API with id to return te
 })    
 .then((data) => {
     buyItem(data);  // invoke function 
+    updateCart(data)
+
 })
 
 // Show product info
@@ -71,6 +73,7 @@ function buyItem(data) {
 
 
 addToCart(data);
+// updateCart(data)
 
 };
 
@@ -79,7 +82,7 @@ addToCart(data);
 
         function addToCart(data) {
         let addToCart = document.getElementsByTagName("button");
-        var selectElem = document.getElementById('colors');
+        let selectElem = document.getElementById('colors');
                 
         for (let i = 0; i < addToCart.length; i++) { // Loop enables to get value of HTML created DOM element since it is an array
             addToCart[i].addEventListener("click", function(event){ // click event
@@ -95,20 +98,25 @@ addToCart(data);
 
             teddy.color = selectElem.value; // Get value from <select id= "colors">
 
+
             cart.push(teddy) // push data in array
             localStorage.setItem("cart", JSON.stringify(cart)) 
+
             alert("Article enregistré dans le panier")
-        
-            })      
+            updateCart(data)
+
+            })         
         }  
     }
 
 
+    function updateCart(data) {
+        let numberOfItems = document.querySelectorAll("i"); // target element
+        let cartCount = document.createElement("span"); // create span element 
+        numberOfItems[0].appendChild(cartCount); // update it with my local storage
+        cartCount.textContent = JSON.parse(localStorage.getItem('cart')).length; // fill it with my local storage length
 
-
-
-
-
+    }
 
 
 
