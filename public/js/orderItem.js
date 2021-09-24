@@ -8,10 +8,18 @@ fetch("http://localhost:3000/api/teddies/") // fetch API with id to return teddy
     }
 })    
 .then((data) => {
+
+    showCart(data)
+    updatePrice(data)
+     
+})   
+
+
+function showCart(data) {
     let showCart = document.getElementById("cart");
 
-    if (localStorage.getItem('cart') != null) {
-        let showItem = JSON.parse(localStorage.getItem("cart"))
+    let showItem = JSON.parse(localStorage.getItem("cart"))
+  
         for (let i = 0; i < data.length; i++) {
             let figure = document.createElement("figure"); 
             let productCaption = document.createElement("img");
@@ -31,12 +39,43 @@ fetch("http://localhost:3000/api/teddies/") // fetch API with id to return teddy
             productSection.appendChild(productName);
             productSection.appendChild(productColor)
             productSection.appendChild(productPrice);
-        }
-    } else {
-        // A COMPLETER POUR UPDATER LES OURS EN PELUCHE DEJA DANS LE PANIER
-    }    
 
-})   
+        }
+
+        updatePrice(data)
+}
+
+
+// Display number of items in cart
+let basket = document.querySelectorAll("i"); // target element
+let basketCount = document.createElement("span");
+basket[0].appendChild(basketCount);
+
+
+let numberOfItems = document.getElementById("numberOfItems"); // Je cible
+let cartCount = document.createElement("span"); // create span element 
+numberOfItems.appendChild(cartCount); // update it with my local storage
+
+cartCount.textContent = JSON.parse(localStorage.getItem('cart')).length; // fill it with my local storage length
+basketCount.textContent = JSON.parse(localStorage.getItem('cart')).length; // fill it with my local 
+
+function updatePrice(data) {
+    let totalPrice = document.getElementById("totalPrice");
+    let total = document.createElement("span");
+    totalPrice.appendChild(total);
+    let showPrice = JSON.parse(localStorage.getItem("cart"));
+    let sum=0;
+    for(let i=0; i < showPrice.length;i++) {
+        let price = showPrice[i].price / 100;
+        sum+=price;
+
+    total.textContent = sum.toFixed(2)+" €";
+    }
+}
+
+updatePrice()
+
+
 
 
 
