@@ -93,7 +93,10 @@ header {
 
 #cart {
     flex-direction: column;
+}
 
+#cart p {
+    font-size: 20px;
 }
 
  div {
@@ -114,7 +117,12 @@ header {
     padding: 8px;
     margin: 8px;
    }
-   
+
+
+  input:valid {
+    background-color: #ddffdd;
+  }
+  
 
 footer {
     display: flex;
