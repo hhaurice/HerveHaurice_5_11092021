@@ -73,7 +73,6 @@ function buyItem(data) {
 
 
 addToCart(data);
-// updateCart(data)
 
 };
 
@@ -93,7 +92,8 @@ addToCart(data);
                 name: data.name,
                 price: data.price,
                 color: data.colors,
-                caption: data.imageUrl            
+                caption: data.imageUrl,
+                id: data._id            
             }
 
             teddy.color = selectElem.value; // Get value from <select id= "colors">
@@ -114,7 +114,11 @@ addToCart(data);
         let numberOfItems = document.querySelectorAll("i"); // target element
         let cartCount = document.createElement("span"); // create span element 
         numberOfItems[0].appendChild(cartCount); // update it with my local storage
-        cartCount.textContent = JSON.parse(localStorage.getItem('cart')).length; // fill it with my local storage length
+        if (localStorage.getItem('cart') == null) {
+            cartCount.textContent = 0;
+        } else {
+            cartCount.textContent = JSON.parse(localStorage.getItem('cart')).length; // fill it with my local storage length
+        }
 
     }
 
