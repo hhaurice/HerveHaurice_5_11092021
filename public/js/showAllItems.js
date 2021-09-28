@@ -45,13 +45,12 @@ function showAllItems(data) {
 let numberOfItems = document.querySelectorAll("i"); // target element
 let cartCount = document.createElement("span"); // create span element 
 numberOfItems[0].appendChild(cartCount); // update it with my local storage
- cartCount.textContent = JSON.parse(localStorage.getItem('cart')).length; // fill it with my local storage length
-
-
-
-
-
-
+ 
+ if (localStorage.getItem('cart') == null) {
+    cartCount.textContent = 0;
+} else {
+    cartCount.textContent = JSON.parse(localStorage.getItem('cart')).length; // fill it with my local storage length
+}
 
 
 
