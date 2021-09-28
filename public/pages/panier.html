@@ -41,19 +41,19 @@
                 <p id="numberOfItems">Nombre d'article: </p>
                 <b id="totalPrice">Total: </b>
             </section>
-            <form>
+            <form method="POST">
                 <h2>Informations de livraion</h2>
                 <label for="firstName"></label>
-                <input type="text" id="firstName" name="firstName" placeholder="Nom">
+                <input type="text" id="firstName" name="firstName" placeholder="Nom" required>
                 <label for="lastName"></label>
-                <input type="text" id="lastName" name="lastName" placeholder="Prénom"><br>
+                <input type="text" id="lastName" name="lastName" placeholder="Prénom" required><br>
                 <label for="address"></label>
-                <input type="text" id="address" name="address" placeholder="Adresse">
+                <input type="text" id="address" name="address" placeholder="Adresse" required>
                 <label for="city"></label>
-                <input type="text" id="city" name="city" placeholder="Ville"><br>
+                <input type="text" id="city" name="city" placeholder="Ville" required><br>
                 <label for="email"></label>
-                <input type="email" id="email" name="email" placeholder="Email"><br>
-                <button id="order_btn">Commander</button>
+                <input type="email" id="email" name="email" placeholder="Email" required><br>
+                <button id="order_btn" type="submit"><a href="../pages/confirmation.html">Commander</a></button>
             </form>
         </div>
     </main>    
