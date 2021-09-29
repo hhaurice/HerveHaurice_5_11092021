@@ -84,6 +84,11 @@ nav  a:hover {
     flex-wrap: nowrap;
 }
 
+#confirmation p {
+    font-size: 20px;
+    margin-left: 40px;
+}
+
 header {
     text-align: center;
 }
@@ -175,6 +180,7 @@ footer a:hover {
         width: auto;
         justify-content: space-around;
     }
+
     
     section {
         flex-direction: column;
@@ -201,6 +207,11 @@ footer a:hover {
     li {
         padding: 16px;
     }
+    span {
+        top: 110px;
+        right: unset;
+    }
+
 }
 
 @media screen and (max-width: 768px) {
@@ -211,4 +222,11 @@ footer a:hover {
     li {
         padding: 4px;
     }
+
+    span {
+        top: 100px;
+        right: unset;
+    }
+
+   
 }

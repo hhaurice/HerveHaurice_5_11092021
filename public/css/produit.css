@@ -247,6 +247,11 @@ footer a:hover {
     li {
         padding: 16px;
     }
+
+    span {
+        top: 110px;
+        right: unset;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -256,5 +261,10 @@ footer a:hover {
 
     li {
         padding: 4px;
+    }
+
+    span {
+        top: 100px;
+        right: unset;
     }
 }

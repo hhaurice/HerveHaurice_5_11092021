@@ -278,6 +278,12 @@ footer a:hover {
     button {
         display: inline;
     }  
+
+    span {
+        top: 110px;
+        right: unset;
+    }
+
 }
 
 @media screen and (max-width: 768px) {
@@ -295,5 +301,9 @@ footer a:hover {
         align-items: center;
        }
 
+       span {
+        top: 100px;
+        right: unset;
+    }
     
 }
