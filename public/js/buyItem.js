@@ -31,7 +31,7 @@ function buyItem(data) {
 
     // Show product info by creating dynamically DOM elements
 
-    let product = document.getElementById('produit');
+    let product = document.getElementById("produit");
 
     let productCaption = document.createElement("img");
     let productSection = document.createElement("section");
@@ -81,7 +81,7 @@ addToCart(data);
 
         function addToCart(data) {
         let addToCart = document.getElementsByTagName("button");
-        let selectElem = document.getElementById('colors');
+        let selectElem = document.getElementById("colors");
                 
         for (let i = 0; i < addToCart.length; i++) { // Loop enables to get value of HTML created DOM element since it is an array
             addToCart[i].addEventListener("click", function(event){ // click event
