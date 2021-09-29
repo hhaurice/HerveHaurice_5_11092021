@@ -24,9 +24,8 @@ function showCart(data) {
         emptyCartMessage.textContent = "Votre panier est vide";
 
     } else {
-
-        for (let i = 0; i < data.length; i++) {
-
+        
+        for (let i in showItem) {
 
             let figure = document.createElement("figure"); 
             let productCaption = document.createElement("img");
@@ -48,6 +47,7 @@ function showCart(data) {
             productSection.appendChild(productPrice);
 
         }
+        
     }
 }
 
@@ -97,21 +97,29 @@ function updatePrice(data) {
 
 
 
-/* test post method
+ // test post method
+
+ 
+const myForm = document.getElementById("form");
+
+myForm.addEventListener("submit", function(e){
+    e.preventDefault();
+
+    let contact = {
+        firstName: document.getElementById("firstName").value,
+        lastName: document.getElementById("lastName").value,
+        address: document.getElementById("address").value,
+        city: document.getElementById("city").value,
+        email: document.getElementById("email").value
+    };
 
 
-let contact = {
-    firstName: "hello",
-    lastName: "hello",
-    address: "hello",
-    city: "hello",
-    email: "hello"};
+let allProducts = JSON.parse(localStorage.getItem("cart"));
+let products = [];
 
-console.log(contact)
-
-let getProductId = JSON.parse(localStorage.getItem("cart"));
-let products = getProductId[0].id;
-console.log(products)
+allProducts.forEach(product => {
+    products.push(product.id)
+});
 
 
 fetch("http://localhost:3000/api/teddies/order", {
@@ -119,11 +127,22 @@ fetch("http://localhost:3000/api/teddies/order", {
     headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
-      },
+      },  
     body: JSON.stringify({contact, products})
   
 }).then(res => {
-    console.log(res.json())
+    
+    return res.json()
 })
 
-*/
+})
+
+
+
+
+
+
+
+
+
+
