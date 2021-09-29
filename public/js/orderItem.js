@@ -133,6 +133,24 @@ fetch("http://localhost:3000/api/teddies/order", {
 }).then(res => {
     
     return res.json()
+
+}).then(res => {
+
+   
+
+   let myConfirmation = JSON.parse(localStorage.getItem("myConfirmation")) || [] 
+
+   let confirmation = {
+       name: res.contact.lastName,
+       price: document.querySelectorAll("span")[2].innerText,
+       id: res.orderId,
+   }
+
+   myConfirmation.push(confirmation) // push data in array
+   localStorage.setItem("confirmation", JSON.stringify(confirmation)) 
+   window.location.replace("../pages/confirmation.html")
+
+
 })
 
 })
