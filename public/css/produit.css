@@ -153,7 +153,7 @@ button {
 }
 
 button:hover {
-   filter: brightness(0.9)
+   background-color: #F9E6F2;
 }
    
 footer ul {
