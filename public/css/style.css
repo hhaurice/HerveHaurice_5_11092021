@@ -14,29 +14,17 @@ h2 {
     margin-left: 40px;
 }
 
-h3{
+h3 { 
     display: flex;
     align-items: center;
     font-size: 2rem;
     margin-left: 40px;
-   }
+}
    
-
-ul {
-    list-style: none;
-}
-
-nav {
-    display: flex;
-    flex-direction: row;
-    background-color: #F6E9F1;
-}
-
-nav img {
-    width: 20%;
-    height: 100px;
-    align-self: center;
-    object-fit: contain;
+a {
+    width: 100%;
+    text-decoration: none;
+    color: #3c3434;
 }
 
 
@@ -46,10 +34,16 @@ ul {
     justify-content: end;
     align-items: center;
     font-size: 1.4rem;
+    list-style: none;
 }
 
 li {
     padding: 50px;
+}
+
+
+header {
+    text-align: center;
 }
 
 span {
@@ -68,31 +62,6 @@ span {
     font-size: 14px;
 }
 
-nav a {
-    display: flex;
-    align-self: center;
-}
-
-nav  a:hover {
-    color: #9C5BEC;
-   }
-   
-
-#catalogue {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-}
-
-#confirmation p {
-    font-size: 20px;
-    margin-left: 40px;
-}
-
-header {
-    text-align: center;
-}
-
 section {
     display: flex;
     justify-content: space-between;
@@ -105,15 +74,6 @@ footer {
     margin-top: 40px;
     height: 100px;
     background-color: #F6E9F1;
-
-}
-   
-   
-   
-a {
-    width: 100%;
-    text-decoration: none;
-    color: #3c3434;
 }
 
 img {
@@ -130,7 +90,41 @@ figure {
     border-top-right-radius: 20px;
     padding-bottom: 10px;
 }
-       
+
+nav {
+    display: flex;
+    flex-direction: row;
+    background-color: #F6E9F1;
+}
+
+nav img {
+    width: 20%;
+    height: 100px;
+    align-self: center;
+    object-fit: contain;
+}
+
+
+nav a {
+    display: flex;
+    align-self: center;
+}
+
+nav  a:hover {
+    color: #9C5BEC;
+}
+   
+#catalogue {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+#confirmation p {
+    font-size: 20px;
+    margin-left: 40px;
+}
+      
 figcaption, b {
     padding: 10px;
 }
@@ -145,10 +139,9 @@ footer ul {
     font-size: 1.4rem;
 }
 
-
 footer a:hover {
     color: #9C5BEC;
-   }
+}
 
 /* Media queries */ 
 
@@ -181,7 +174,7 @@ footer a:hover {
         justify-content: space-around;
     }
 
-    
+
     section {
         flex-direction: column;
     }
@@ -207,7 +200,7 @@ footer a:hover {
     li {
         padding: 16px;
     }
-    
+
     span {
         top: 110px;
         right: unset;
@@ -228,6 +221,4 @@ footer a:hover {
         top: 100px;
         right: unset;
     }
-
-   
 }

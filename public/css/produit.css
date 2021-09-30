@@ -11,34 +11,18 @@ h1, h2 {
 }
 
 
-h3{
+h3 {
     display: flex;
     align-items: center;
     font-size: 2rem;
     margin-left: 40px;
-   }
-   
-
-ul {
-    list-style: none;
 }
 
-nav {
-    display: flex;
-    flex-direction: row;
-    background-color: #F6E9F1;
-}
 
-nav a {
-    display: flex;
-    align-self: center;
-}
-
-nav img {
-    width: 20%;
-    height: 100px;
-    align-self: center;
-    object-fit: contain;
+a {
+    width: 100%;
+    text-decoration: none;
+    color: #3c3434;
 }
 
 
@@ -48,18 +32,23 @@ ul {
     justify-content: end;
     align-items: center;
     font-size: 1.4rem;
+    list-style: none;
+
 }
 
 li {
     padding: 50px;
 }
 
+header {
+    text-align: center;
+}
 
-
-nav  a:hover {
-    color: #9C5BEC;
-   }
-   
+nav {
+    display: flex;
+    flex-direction: row;
+    background-color: #F6E9F1;
+}
 
 span {
     position: absolute;
@@ -77,63 +66,16 @@ span {
     font-size: 14px;
 }
 
-#produit {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-around;
-}
-
-header {
-    text-align: center;
-}
-
 section {
     display: flex;
     flex-direction: column;
 }
-
-footer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-top: 40px;
-    height: 100px;
-    background-color: #F6E9F1;
-
-}
-   
-   
-   
-a {
-    width: 100%;
-    text-decoration: none;
-    color: #3c3434;
-}
-
-#produit img {
-    width: 40%;
-    object-fit: cover;
-    height: auto;
-}
-
-#colors {
-    background-color: #F6E9F1;
-    border: none;
-    padding: 8px;
-}
-       
-
 
 figure {
     border: solid 1px #F6E9F1;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     padding-bottom: 10px;
-}
-       
-figcaption, b {
-    padding: 10px;
 }
 
 figcaption {
@@ -155,13 +97,61 @@ button {
 button:hover {
    background-color: #F9E6F2;
 }
+
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 40px;
+    height: 100px;
+    background-color: #F6E9F1;
+
+}
+
+nav a {
+    display: flex;
+    align-self: center;
+}
+
+nav img {
+    width: 20%;
+    height: 100px;
+    align-self: center;
+    object-fit: contain;
+}
+
+nav  a:hover {
+    color: #9C5BEC;
+}
+   
+#produit {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
+
+#produit img {
+    width: 40%;
+    object-fit: cover;
+    height: auto;
+}
+
+#colors {
+    background-color: #F6E9F1;
+    border: none;
+    padding: 8px;
+}
+              
+figcaption, b {
+    padding: 10px;
+}
    
 footer ul {
     display: flex;
     align-items: center;
     font-size: 1.4rem;
 }
-
 
 footer a:hover {
     color: #9C5BEC;
@@ -200,7 +190,7 @@ footer a:hover {
 
     #produit {
         flex-direction: column;
-       }
+    }
 
        
     #produit img {
@@ -209,10 +199,8 @@ footer a:hover {
 
     button {
         width: 14rem;
-       }
-       
-       
-    
+   }
+           
     section {
         align-items: center;
     }
