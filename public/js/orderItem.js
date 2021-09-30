@@ -33,11 +33,13 @@ function showCart(data) {
             let productName = document.createElement("h2");
             let productColor = document.createElement("p")
             let productPrice = document.createElement("p");
+            let deleteBtn = document.createElement("button");
     
             productCaption.src = showItem[i].caption; 
             productName.innerHTML = showItem[i].name;
             productColor.innerHTML = showItem[i].color;
             productPrice.innerHTML = showItem[i].price / 100 +" euros";
+  
             
             showCart.appendChild(figure)
             figure.appendChild(productCaption);
@@ -45,11 +47,26 @@ function showCart(data) {
             productSection.appendChild(productName);
             productSection.appendChild(productColor)
             productSection.appendChild(productPrice);
+          
 
         }
         
-    }
+        function deleteItem (){
+            let removeBtn = document.getElementById("empty_btn");
+                 removeBtn.addEventListener("click", function(e){ 
+                 localStorage.removeItem("cart")  
+                 showCart.remove(data);
+                 location.reload();   
+
+                })    
+        }
+        
+        deleteItem()
+    }   
 }
+
+
+
 
 
 // Display number of items in cart
@@ -71,6 +88,7 @@ if (localStorage.getItem('cart') == null) {
     cartCount.textContent = JSON.parse(localStorage.getItem('cart')).length; // fill it with my local storage length
     basketCount.textContent = JSON.parse(localStorage.getItem('cart')).length; // fill it with my local 
 }
+
 
 
 function updatePrice(data) {
@@ -96,10 +114,6 @@ function updatePrice(data) {
 
 
 
-
- // test post method
-
- 
 const myForm = document.getElementById("form");
 
 myForm.addEventListener("submit", function(e){
@@ -137,7 +151,6 @@ fetch("http://localhost:3000/api/teddies/order", {
 }).then(res => {
 
    
-
    let myConfirmation = JSON.parse(localStorage.getItem("myConfirmation")) || [] 
 
    let confirmation = {
