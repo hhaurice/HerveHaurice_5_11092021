@@ -84,6 +84,7 @@ nav  a:hover {
 
 header {
     text-align: center;
+    margin-bottom: 40px;
 }
 
 #order {
@@ -167,6 +168,24 @@ figcaption {
 }
 
 
+
+#cta {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    width: 100%;
+}
+
+#empty_btn {
+    margin-left: 20px;
+    background-color: #F0F0F0;
+    border: solid 1px #F0F0F0;
+}
+#empty_btn:hover{
+    background-color: #D6D6D6;
+}
+
+
 button {
     width: 30%;
     display: flex;
@@ -181,7 +200,7 @@ button {
 }
 
 button:hover {
-   filter: brightness(0.9)
+   background-color: #F9E6F2;
 }
    
 
@@ -253,9 +272,6 @@ footer a:hover {
         flex-direction: column;
     }
 
-    img {
-        height: auto;
-    }
 
 
     footer {
@@ -279,7 +295,7 @@ footer a:hover {
         display: inline;
     }  
 
-    span {
+    i span {
         top: 110px;
         right: unset;
     }
@@ -287,6 +303,7 @@ footer a:hover {
 }
 
 @media screen and (max-width: 768px) {
+
     footer ul {
         flex-direction: column;
     }
@@ -301,9 +318,38 @@ footer a:hover {
         align-items: center;
        }
 
-       span {
+      i span {
         top: 100px;
         right: unset;
     }
     
+}
+
+@media screen and (max-width: 500px) {
+
+
+    section p {
+        text-align: center;
+    }
+
+    figure {
+        flex-direction: column;
+        border-top-right-radius: 20px;
+        border-bottom-left-radius: 0;
+    }
+
+    figcaption {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    img {
+        width: auto;
+        border-top-right-radius: 20px;
+        border-bottom-left-radius: unset;
+    }
+
+
+
 }
