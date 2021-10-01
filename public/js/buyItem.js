@@ -1,36 +1,36 @@
-
 //Get ID from url
 function getId() {
-    let queryString = window.location.search; // get url after ?: exemple pour Norbert: ?id=5beaa8bf1c9d440000a57d94
+    let queryString = window.location.search; // get url after symbol ? for Norbert: ?id=5beaa8bf1c9d440000a57d94
     let id = queryString.replace("?id=", ""); // remove ?id=
-    return id; // Rreturn only id
+   
+    return id; // Rreturn only id number
 }
 
 let id = getId(); // put function id in a variable so that we can use it later in the code
 
 // Get Data API
-
 fetch("http://localhost:3000/api/teddies/"+id) // fetch API with id to return teddy given id. Ex: in the API, Norbert is http://localhost:3000/api/teddies/5be9c8541c9d440000665243
 .then((res) => {
+    
     if(res.ok){
-        return res.json(); // get response in JSON
-        
+       
+        return res.json(); // get response in JSON     
+  
     } else {
+       
         throw new Error("Problème de serveur")
     }
 })    
 .then((data) => {
-    buyItem(data);  // invoke function 
-    updateCart(data)
+
+    displayItem(data);  // invoke function 
+    updateCart(data);
 
 })
 
 // Show product info
-
-function buyItem(data) {
-
+function displayItem(data) {
     // Show product info by creating dynamically DOM elements
-
     let product = document.getElementById("produit");
 
     let productCaption = document.createElement("img");
@@ -43,7 +43,6 @@ function buyItem(data) {
     let addtoBasketBtn = document.createElement("button");
 
     // Fill DOM created elements with data
-
     productCaption.src = data.imageUrl; 
     productName.innerHTML = data.name;
     selectColor.id = "colors";
@@ -52,7 +51,7 @@ function buyItem(data) {
     productDescription.innerHTML = data.description;
     addtoBasketBtn.innerHTML = "Ajoutez au panier";
 
-
+    // Add it to html document
     product.appendChild(productCaption);
     product.appendChild(productSection);
     productSection.appendChild(productName);
@@ -71,57 +70,53 @@ function buyItem(data) {
     productSection.appendChild(productDescription);
     productSection.appendChild(addtoBasketBtn);
 
-
-addToCart(data);
+    addToCart(data); // added function addtocart to that when user click on button it calls the function below
 
 };
 
+// Add to cart function
 
-    // Add to cart
+function addToCart(data) {
+    let addToCart = document.getElementsByTagName("button");
+    let selectElem = document.getElementById("colors");
+            
+    for (let i = 0; i < addToCart.length; i++) { // Loop enables to get value from the array button which is a HTML created DOM element 
+        addToCart[i].addEventListener("click", function(event){ // click event
+    
+    let cart = JSON.parse(localStorage.getItem("cart")) || []; // create an array for cart where we push data
 
-        function addToCart(data) {
-        let addToCart = document.getElementsByTagName("button");
-        let selectElem = document.getElementById("colors");
-                
-        for (let i = 0; i < addToCart.length; i++) { // Loop enables to get value of HTML created DOM element since it is an array
-            addToCart[i].addEventListener("click", function(event){ // click event
+    // create object
+        let teddy = {
+            name: data.name,
+            price: data.price,
+            color: data.colors,
+            caption: data.imageUrl,
+            id: data._id            
+        };
+
+        teddy.color = selectElem.value; // Get value from <select id= "colors">
+
+        cart.push(teddy); // push data of object in array
+        localStorage.setItem("cart", JSON.stringify(cart)); // Convert cart to add it to localstorage
+
+        alert("Article enregistré dans le panier"); // display alert when item is added to cart 
         
-        let cart = JSON.parse(localStorage.getItem("cart")) || [] 
+        updateCart(data); // invoke updateCart if item is added to cart
 
-            let teddy = {
-                name: data.name,
-                price: data.price,
-                color: data.colors,
-                caption: data.imageUrl,
-                id: data._id            
-            }
+        })      
+    }  
+};
 
-            teddy.color = selectElem.value; // Get value from <select id= "colors">
+function updateCart() {
+    let numberOfItems = document.querySelectorAll("i"); // target fontawesome element
 
+    let cartCount = document.createElement("span"); // create span element 
 
-            cart.push(teddy) // push data in array
-            localStorage.setItem("cart", JSON.stringify(cart)) 
+    numberOfItems[0].appendChild(cartCount); // add span to html document
 
-            alert("Article enregistré dans le panier")
-            updateCart(data)
-
-            })         
-        }  
+    if (localStorage.getItem('cart') == null) {
+        cartCount.textContent = 0; // Display 0 in cart if localstorage is null
+    } else {
+        cartCount.textContent = JSON.parse(localStorage.getItem('cart')).length; // fill it with my local storage length
     }
-
-
-    function updateCart(data) {
-        let numberOfItems = document.querySelectorAll("i"); // target element
-        let cartCount = document.createElement("span"); // create span element 
-        numberOfItems[0].appendChild(cartCount); // update it with my local storage
-        if (localStorage.getItem('cart') == null) {
-            cartCount.textContent = 0;
-        } else {
-            cartCount.textContent = JSON.parse(localStorage.getItem('cart')).length; // fill it with my local storage length
-        }
-
-    }
-
-
-
-
+};

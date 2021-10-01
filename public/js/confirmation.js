@@ -2,16 +2,19 @@
 // Function display confirmation with user name, order id and total price set in key confirmation in localstorage
 
 function displayConfirmation(){
+
     let myMessage = document.getElementById("confirmation");
+   
     let showConfirmation = JSON.parse(localStorage.getItem("confirmation"));
-    
+        // Create html elements
         let myName = document.createElement("h2");
         let orderId = document.createElement("p");
         let totalPrice = document.createElement("b");
         let myCondition = document.createElement("p");
         let homePageLink = document.createElement("a");
         let homePageBtn = document.createElement("button");
-    
+        
+        // Set the values of our elements based on the value of showConfirmation, using dot notation. As this is an object, no need to use an index of array. 
         myName.innerHTML = showConfirmation.name+",";
         orderId.innerHTML = "Nous sommes ravis que vous ayez trouvé votre bonheur et confirmons l'enregistrement de votre commande n° "+showConfirmation.id
         +" pour un montant total de ";
@@ -21,8 +24,9 @@ function displayConfirmation(){
         homePageLink.href = ("../index.html")
         homePageBtn.innerHTML = "Retour à la page d'accueil";
 
-        myMessage.append(myName)
-        myMessage.append(orderId);
+        //Add every created elements to HTML document
+        myMessage.appendChild(myName)
+        myMessage.appendChild(orderId);
         orderId.appendChild(totalPrice);
         myMessage.appendChild(myCondition);
         myMessage.appendChild(homePageLink);
@@ -31,13 +35,13 @@ function displayConfirmation(){
 
 displayConfirmation();
 
-// Set to zero the basket in local storage by deleting cart 
+// This function deleteItem will set to zero the cart in local storage by deleting it 
 
 function deleteItem (){
-         localStorage.removeItem("cart")  
-}
+    localStorage.removeItem("cart") ; 
+};
 
-deleteItem()
+deleteItem();
 
 
 
