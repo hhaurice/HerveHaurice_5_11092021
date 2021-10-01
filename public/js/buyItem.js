@@ -1,15 +1,18 @@
-//Get ID from url
+
+//function GetId enables to get the product id in URL that we will use later to communicate with the API
+
 function getId() {
-    let queryString = window.location.search; // get url after symbol ? for Norbert: ?id=5beaa8bf1c9d440000a57d94
+    let queryString = window.location.search; // get url after symbol ? Ex: for Norbert: ?id=5beaa8bf1c9d440000a57d94
     let id = queryString.replace("?id=", ""); // remove ?id=
    
-    return id; // Rreturn only id number
+    return id; // Return only id number
 }
 
-let id = getId(); // put function id in a variable so that we can use it later in the code
+let id = getId(); // put function id in a variable so that we can use it to get a teddy info according to his product id
 
-// Get Data API
-fetch("http://localhost:3000/api/teddies/"+id) // fetch API with id to return teddy given id. Ex: in the API, Norbert is http://localhost:3000/api/teddies/5be9c8541c9d440000665243
+// Get Data API with the id we got in function getId above
+
+fetch("http://localhost:3000/api/teddies/"+id) // fetch API and add +id to return teddy info. Ex: in the API, Norbert is http://localhost:3000/api/teddies/5be9c8541c9d440000665243
 .then((res) => {
     
     if(res.ok){
@@ -28,7 +31,8 @@ fetch("http://localhost:3000/api/teddies/"+id) // fetch API with id to return te
 
 })
 
-// Show product info
+// function displayItem display product info if response from API is ok
+
 function displayItem(data) {
     // Show product info by creating dynamically DOM elements
     let product = document.getElementById("produit");
@@ -66,6 +70,7 @@ function displayItem(data) {
         option.selected = data.colors[0];
         selectColor.appendChild(option);
     }
+
     productSection.appendChild(productPrice).style.fontWeight="900";
     productSection.appendChild(productDescription);
     productSection.appendChild(addtoBasketBtn);
@@ -74,7 +79,7 @@ function displayItem(data) {
 
 };
 
-// Add to cart function
+// function addToCart will add item info to localStorage when user click on "Ajoutez au Panier" button, and display an alert once the product is added to cart 
 
 function addToCart(data) {
     let addToCart = document.getElementsByTagName("button");
@@ -85,7 +90,7 @@ function addToCart(data) {
     
     let cart = JSON.parse(localStorage.getItem("cart")) || []; // create an array for cart where we push data
 
-    // create object
+        // create object
         let teddy = {
             name: data.name,
             price: data.price,
@@ -106,6 +111,8 @@ function addToCart(data) {
         })      
     }  
 };
+
+// function updateCart will display the number of items in the cart icon if "cart"is true in localStorage
 
 function updateCart() {
     let numberOfItems = document.querySelectorAll("i"); // target fontawesome element

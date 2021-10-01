@@ -1,5 +1,4 @@
-
-// Function display confirmation with user name, order id and total price set in key confirmation in localstorage
+// Function displayConfirmation will create elements in html document with a message that displays user name, order id and total price set in key "confirmation" in localstorage
 
 function displayConfirmation(){
 

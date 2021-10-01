@@ -11,9 +11,10 @@ fetch("http://localhost:3000/api/teddies") // get data from API
     showAllItems(data);  // invoke function 
 });
 
-// Display all products    
+// function showAllItems display all items from the API in the HTML document that we create dynamically if the response from server is ok
 
 function showAllItems(data) {
+
     let listItem = document.getElementById("catalogue"); // target where in HTML page we want to insert items
     let teddySection = document.createElement("section"); // create a new section element
 
@@ -37,11 +38,12 @@ function showAllItems(data) {
         figure.appendChild(teddyName); // add figcaption to figure
         figure.appendChild(teddyPrice); // add price to figure
     }
-  }
+};
 
-// Display number of items in cart
+// function updateCart will display the number of items in the cart icon if "cart"is true in localStorage
 
 function updateCart(){
+
     let numberOfItems = document.querySelectorAll("i"); // target fontawesome element
    
     let cartCount = document.createElement("span"); // create span element 
@@ -56,3 +58,4 @@ function updateCart(){
 }
 
 updateCart();
+

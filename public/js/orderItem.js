@@ -11,7 +11,8 @@ fetch("http://localhost:3000/api/teddies/") // fetch API with id to return teddy
     showSelectedItems(data);     
 })   
 
-// Create function that display the items added in localstorage
+// Function showSelectedItem will display the items added in localstorage in a section in the html document
+
 function showSelectedItems(data) {
 
     let itemInCart = document.getElementById("cart");
@@ -25,7 +26,7 @@ function showSelectedItems(data) {
 
     } else {
         
-        for (let i in showItem) { // create figure that contains product info and add it to html document
+        for (let i in showItem) { //will create figure that contains product info and add it to html document if showItem is true
 
             let figure = document.createElement("figure"); 
             let productCaption = document.createElement("img");
@@ -47,28 +48,30 @@ function showSelectedItems(data) {
             productSection.appendChild(productPrice);
         }
         
-function deleteItem (){
+        // Function deleteItem will remove cart in localStorage, remove the DOM created elements if cart is true and set everything to zero
 
-    let removeBtn = document.getElementById("empty_btn");
+        function deleteItem (){
 
-    removeBtn.addEventListener("click", function(){ 
+            let removeBtn = document.getElementById("empty_btn");
 
-    localStorage.removeItem("cart");  // onclick, remove cart from localstorage
-   
-    itemInCart.remove(data); // remove html created document itemInCart
-   
-    location.reload(); // reload page so that we can get all values initialized to null
+            removeBtn.addEventListener("click", function(){ 
 
-    })    
- }
+            localStorage.removeItem("cart");  // onclick, remove cart from localstorage
         
-    deleteItem()
+            itemInCart.remove(data); // remove html created document itemInCart
+        
+            location.reload(); // reload page so that we can get all values initialized to null
+
+            })    
+        }
+        
+        deleteItem()
 
     }   
 };
 
 
-// Display number of items in cart
+// Function updateCartandOrder will display dynamically the number of items in cart and update "Nombre d'article" of the html document
 
 function updateCartandOrder () {
     
@@ -92,7 +95,10 @@ function updateCartandOrder () {
 
 updateCartandOrder();
 
+//function updatePrice will update the total price any time there is an article added to cart by getting its value in localstorage and adding it to "total" of html document
+
 function updatePrice() {
+
     let totalPrice = document.getElementById("totalPrice"); // target totalPrice id in html
     let total = document.createElement("span"); // create span element
     totalPrice.appendChild(total); // add span to html document
@@ -117,12 +123,16 @@ function updatePrice() {
 
 updatePrice();
 
-// Function that will send the data of products and value in form by using fetch method post
+// Function sendOrder will send the data of products as an array and contact as an object that are the values of the form, using fetch post method
+
 function sendOrder () {
+
     const myForm = document.getElementById("form");
 
     myForm.addEventListener("submit", function(e){
+        
         e.preventDefault();
+
         // Create object of contact that target the id put in the form of html document and their value
         let contact = {
             firstName: document.getElementById("firstName").value,
@@ -139,9 +149,9 @@ function sendOrder () {
         // Create a forEach function that will push localStorage value to array(products)
         allProducts.forEach(product => {
             products.push(product.id) // use dot notation to only get product id and put it in products
-    });
+        });
     
-        // Fetch post method
+        // Fetch post method to send data to API
         fetch("http://localhost:3000/api/teddies/order", {
             method: "POST",
             headers: {
@@ -156,10 +166,10 @@ function sendOrder () {
             return res.json();
         
         }).then(res => { 
-        // With the response, we create a key in localStorage that will store the data needed to display a confirmation message that we will display on confirmation page
+        // With the response, we create a key in localStorage that will store the data needed to display a confirmation message that we will be displayed on confirmation page
 
         let myConfirmation = JSON.parse(localStorage.getItem("myConfirmation")) || [] // create a variable that contains an array that we will in our localstorage
-            // Create object that will be the value of MyConfirmation
+        // Create object that will be the value of MyConfirmation
         let confirmation = {
             name: res.contact.lastName, // use dot notation to get lastName of contact
             price: document.querySelectorAll("span")[2].innerText, // use index 2 of array of span to access to the totalPrice in html
