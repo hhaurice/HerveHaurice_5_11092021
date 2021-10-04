@@ -6,33 +6,80 @@
 
     <title>Orinoco - Entreprise de commerce en ligne</title>
 
-    <link rel="icon" href="logo.PNG" type="image/x-icon">
+    <link rel="icon" href="../../public/logo.PNG" type="image/x-icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Knewave&display=swap" > 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Knewave&family=Yanone+Kaffeesatz:wght@200&display=swap"> 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <link rel="stylesheet" href="../css/order.css">
 
     <meta name="description" content="Orinoco, entreprise de vente en ligne de produits thématiques.">
     <meta name="author" content="Hervé Haurice">
-    <title>Oriours - Entreprise de commerce en ligne</title>
+
+    <title>Orinoco - Commandez vous ours en pelouche en ligne</title>
 </head>
+
 <body>
-        <header>
-            <h1>Orinoco</h1>
-            <nav>
-                <ul>
-                    <li><a href="../index.html" >Accueil</a></li>
-                    <li><a href="./pages/panier.html">Panier</a></li>
-                </ul>
-            </nav>
-        </header>
-        <article>
+
+    <nav>
+        <a href="../index.html"><img src="../logo.PNG" alt="logo"></a>
+        <ul>
+            <li><a href="../index.html" >Accueil</a></li>
+            <li><a href="./panier.html"><i class="fas fa-shopping-cart"></i></a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Finalisez votre commande</h1>
+    </header>
+
+    <main>
+        <article id="order">
+            <h2>Mon Panier</h2>
+            <section id="cart"></section>
         </article>
-        <footer>
-            <h3>Orinoco</h3>
-                <ul>
-                    <li><a href="#">CGV</a></li>
-                    <li><a href="#">Mentions Légales</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-        </footer>
-<script src="./js/ajax.js"></script>
+
+        <div id="container">
+            <section id="overview">
+                <h3>Synthèse de la commande</h3>
+                <p id="numberOfItems">Nombre d'article: </p>
+                <b id="totalPrice">Total: </b>
+            </section>
+
+            <form method="POST" id="form">  
+                <h2>Informations de livraion</h2>              
+                <label for="firstName"></label>
+                <input type="text" id="firstName" name="firstName" placeholder="Nom" required>
+                <label for="lastName"></label>
+                <input type="text" id="lastName" name="lastName" placeholder="Prénom" required><br>
+                <label for="address"></label>
+                <input type="text" id="address" name="address" placeholder="Adresse" required>
+                <label for="city"></label>
+                <input type="text" id="city" name="city" placeholder="Ville" required><br>
+                <label for="email"></label>
+                <input type="email" id="email" name="email" placeholder="Email" required><br>
+                
+                <div id="cta">
+                    <button id="order_btn" type="submit">Commander</a></button>
+                    <button id="empty_btn" type="submit">Vider le panier</a></button>
+                </div>
+            </form>
+        </div>
+        
+    </main>    
+
+    <footer>
+        <h3>Orinoco</h3>
+            <ul>
+                <li><a href="#">CGV</a></li>
+                <li><a href="#">Mentions Légales</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+    </footer>
+
+<script src="../../public/js/orderItem.js"></script>
+
 </body>
 </html>
