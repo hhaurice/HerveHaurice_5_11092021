@@ -252,6 +252,10 @@ footer a:hover {
     padding: 1rem;
     text-align: center;
     }
+
+    #cart p {
+        text-align: center;
+    }
     
     section {
         flex-direction: column;
