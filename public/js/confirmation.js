@@ -1,8 +1,10 @@
+"use strict";
+
 // Function displayConfirmation will create elements in html document with a message that displays user name, order id and total price set in key "confirmation" in localstorage
 
 function displayConfirmation(){
 
-    let myMessage = document.getElementById("confirmation");
+    const myMessage = document.getElementById("confirmation");
    
     let myConfirmation = JSON.parse(localStorage.getItem("confirmation"));
 
@@ -16,10 +18,9 @@ function displayConfirmation(){
         
         // Set the values of our elements based on the value of myConfirmation, using dot notation. As this is an object, no need to use an index of array. 
         myName.innerHTML = myConfirmation.name+",";
-        orderId.innerHTML = "Nous sommes ravis que vous ayez trouvé votre bonheur et confirmons l'enregistrement de votre commande n° "+myConfirmation.id
+        orderId.innerHTML = "Nous sommes ravis que vous ayez trouvé votre bonheur et confirmons l'enregistrement de votre commande n° "+myConfirmation.id 
         +" pour un montant total de ";
         totalPrice.innerHTML = myConfirmation.price;
-        totalPrice.style.fontWeight = 600;
         myCondition.innerHTML = "Vous allez recevoir d'ici peu un email de confirmation de commande. Prochaine étape? L'expédition de votre commande! Vous recevrez un email de notre part pour vous prévenir qu'elle est en route."
         homePageLink.href = ("../index.html")
         homePageBtn.innerHTML = "Retour à la page d'accueil";
@@ -31,7 +32,7 @@ function displayConfirmation(){
         myMessage.appendChild(myCondition);
         myMessage.appendChild(homePageLink);
         homePageLink.appendChild(homePageBtn);
-};
+}
 
 displayConfirmation();
 
