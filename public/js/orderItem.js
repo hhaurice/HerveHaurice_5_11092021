@@ -75,7 +75,7 @@ function updateCartandOrder () {
     let totalItem = document.createElement("span"); // create span element 
     numberOfItems.appendChild(totalItem); // add span to html
     
-    if (localStorage.getItem('cart') == null) { // display 0 in both cart and totalItem in html if cart is null
+    if (localStorage.getItem("cart") == null) { // display 0 in both cart and totalItem in html if cart is null
 
         totalItem.textContent = 0;
         cartCount.textContent = 0;
@@ -178,7 +178,7 @@ function sendOrder () {
         
         myConfirmation.push(confirmation); // push data in array
         localStorage.setItem("confirmation", JSON.stringify(confirmation)); // Set it to localStorage
-        window.location.replace("../pages/confirmation.html")  // open a new window with our confirmation page
+        window.location.replace("../pages/confirmation.html");  // open a new window with our confirmation page
        
         })
     })
