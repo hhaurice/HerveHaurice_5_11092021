@@ -6,7 +6,7 @@ function getId() {
     let id = queryString.replace("?id=", ""); // remove ?id=
 
     return id; // Return only id number
-};
+}
 
 let id = getId(); // put function id in a variable so that we can use it to get a teddy info according to his product id
 

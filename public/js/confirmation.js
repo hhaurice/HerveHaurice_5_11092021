@@ -42,6 +42,6 @@ function deleteItem (){
 
     localStorage.removeItem("cart");
 
-};
+}
 
 deleteItem();
