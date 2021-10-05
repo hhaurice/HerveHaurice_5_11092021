@@ -1,8 +1,10 @@
+"use strict";
+
 // Function showSelectedItem will display the items added in localstorage in a section in the html document
 
 function showSelectedItems(data) {
 
-    let itemInCart = document.getElementById("cart");
+    const itemInCart = document.getElementById("cart");
 
     let showItem = JSON.parse(localStorage.getItem("cart")); // store localstorage in showItem variable
 
@@ -36,27 +38,30 @@ function showSelectedItems(data) {
             productSection.appendChild(productPrice);
         }
         
-        // Function deleteItem will remove cart in localStorage, remove the DOM created elements if cart is true and set everything to zero
-
-        function deleteItem (){
-
-            let removeBtn = document.getElementById("empty_btn");
-
-            removeBtn.addEventListener("click", function(){ 
-
-            localStorage.removeItem("cart");  // onclick, remove cart from localstorage
-            itemInCart.remove(data); // remove html created document itemInCart
-            location.reload(); // reload page so that we can get all values initialized to null
-
-            })    
-        }
-        
-        deleteItem();
+      deleteItem();
 
     }   
-};
+}
 
 showSelectedItems();
+
+// Function deleteItem will remove cart in localStorage, remove the DOM created elements if cart is true and set everything to zero
+
+function deleteItem (){
+
+    let itemInCart = document.getElementById("cart");
+    let removeBtn = document.getElementById("empty_btn");
+
+    removeBtn.addEventListener("click", function(){ 
+
+    localStorage.removeItem("cart");  // onclick, remove cart from localstorage
+    itemInCart.remove(); // remove html created document itemInCart
+    location.reload(); // reload page so that we can get all values initialized to null
+
+    })    
+}
+
+deleteItem();
 
 // Function updateCartandOrder will display dynamically the number of items in cart and update "Nombre d'article" of the html document
 
@@ -81,7 +86,7 @@ function updateCartandOrder () {
         cartCount.textContent = JSON.parse(localStorage.getItem('cart')).length; // fill it with my local 
 
     }
-};
+}
 
 updateCartandOrder();
 
@@ -111,7 +116,7 @@ function updatePrice() {
 
         }
     }
-};
+}
 
 updatePrice();
 
@@ -177,6 +182,6 @@ function sendOrder () {
        
         })
     })
-};
+}
 
 sendOrder();
