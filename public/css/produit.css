@@ -108,9 +108,8 @@ footer {
 
 }
 
-nav a {
-    display: flex;
-    align-self: center;
+img {
+    height: auto;
 }
 
 nav img {
@@ -121,10 +120,15 @@ nav img {
     object-fit: contain;
 }
 
+nav a {
+    display: flex;
+    align-self: center;
+}
+
 nav  a:hover {
     color: #9C5BEC;
 }
-   
+
 #produit {
     display: flex;
     flex-direction: row;
@@ -209,10 +213,6 @@ footer a:hover {
     #produit p {
         text-align: center;
         margin: 10px;
-    }
-
-    img {
-        height: auto;
     }
 
     #colors {

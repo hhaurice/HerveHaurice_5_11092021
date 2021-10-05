@@ -103,7 +103,19 @@ footer {
     height: 100px;
     background-color: #F6E9F1;
 }
-   
+
+footer a:hover {
+    color: #9C5BEC;
+}
+
+img {
+    width: 100%;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    object-fit: cover;
+    height: 200px;
+}
+
 nav img {
     width: 20%;
     height: 100px;
@@ -125,13 +137,6 @@ nav  a:hover {
     font-size: 20px;
 }
 
-img {
-    width: 100%;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    object-fit: cover;
-    height: 200px;
-}
 
 #confirmation a {
     display: flex;
@@ -142,10 +147,6 @@ footer ul {
     display: flex;
     align-items: center;
     font-size: 1.4rem;
-}
-
-footer a:hover {
-    color: #9C5BEC;
 }
 
 /* Media queries */ 
