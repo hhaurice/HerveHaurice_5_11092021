@@ -77,13 +77,6 @@ footer {
     background-color: #F6E9F1;
 }
 
-img {
-    width: 100%;
-    height: 200px;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    object-fit: cover;
-}
 
 figure {
     border: solid 1px #F6E9F1;
@@ -98,15 +91,6 @@ nav {
     background-color: #F6E9F1;
 }
 
-nav img {
-    width: 20%;
-    height: 100px;
-    margin-left: 10px;
-    align-self: center;
-    object-fit: contain;
-}
-
-
 nav a {
     display: flex;
     align-self: center;
@@ -115,7 +99,24 @@ nav a {
 nav  a:hover {
     color: #9C5BEC;
 }
-   
+
+
+img {
+    width: 100%;
+    height: auto;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    object-fit: cover;
+}
+
+nav img {
+    width: auto;
+    height: 100px;
+    margin-left: 10px;
+    align-self: center;
+    object-fit: contain;
+}
+
 #catalogue {
     display: flex;
     flex-direction: column;
@@ -167,10 +168,6 @@ footer a:hover {
         width: auto;
     }
 
-    nav img {
-        width: auto;
-    }
-
     nav ul {
         width: auto;
         justify-content: space-around;
@@ -180,11 +177,6 @@ footer a:hover {
     section {
         flex-direction: column;
     }
-
-    img {
-        height: auto;
-    }
-
 
     footer {
         flex-direction: column;
